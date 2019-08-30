@@ -29,12 +29,12 @@ def get_frame(FRAME_COUNTER):
     return frame, FRAME_COUNTER
 
 # Access video
-cap = cv2.VideoCapture('../../data/hm_162.mp4')
+cap = cv2.VideoCapture('../../data/Chatswood_entrance4.mp4')
 
 # Init parameters
 FRAME_COUNTER = 0
 BINARY_THRESHOLD = 30       # threshold for binarizing 3 channel 8 bit image to 1 channel 8 bit image
-BLURRING_METHOD = True      # if true use dilation, if false use blur smoothing
+BLURRING_METHOD = False      # if true use dilation, if false use blur smoothing
 DILATION_KERNEL_SIZE = 15
 BLUR_KERNEL_SIZE = 30
 DELAY = 0.1                 # artificial DELAY of the played video in milliseconds
