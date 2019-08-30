@@ -22,15 +22,17 @@ import cv2
 import matplotlib.pyplot as plt
 
 
+video_file = "../../data/Chatswood_entrance4.mp4"
+
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-p", "--prototxt", type=str, default = "mobilenet_ssd/MobileNetSSD_deploy.prototxt",
 	help="path to Caffe 'deploy' prototxt file")
 ap.add_argument("-m", "--model", type=str, default = "mobilenet_ssd/MobileNetSSD_deploy.caffemodel",
 	help="path to Caffe pre-trained model")
-ap.add_argument("-i", "--input", type=str, default = "../../data/Chatswood_entrance4.mp4",
+ap.add_argument("-i", "--input", type=str, default = video_file,
 	help="path to optional input video file")
-ap.add_argument("-o", "--output", type=str, default = "output/output_01.avi",
+ap.add_argument("-o", "--output", type=str, default = None,
 	help="path to optional output video file")
 ap.add_argument("-c", "--confidence", type=float, default=0,
 	help="minimum probability to filter weak detections")
