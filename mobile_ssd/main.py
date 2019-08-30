@@ -22,7 +22,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 
-video_file = "../../data/Chatswood_entrance4.mp4"
+video_file = "../../data/DEM8.mp4"
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -127,11 +127,11 @@ while True:
 		# set the status and initialize our new set of object trackers
 		status = "Detecting"
 		trackers = []
-		print('tracking')
+		#print('tracking')
 		plt.imshow(frame)
 		# convert the frame to a blob and pass the blob through the
 		# network and obtain the detections
-		blob = cv2.dnn.blobFromImage(frame, 0.007843, (W, H), 127.5)
+		blob = cv2.dnn.blobFromImage(frame, 0.005843, (W, H), 127.5)
 		net.setInput(blob)
 		detections = net.forward()
 
@@ -193,7 +193,7 @@ while True:
 	# draw a horizontal line in the center of the frame -- once an
 	# object crosses this line we will determine whether they were
 	# moving 'up' or 'down'
-	cv2.line(frame, (0, H // 2), (W, H // 2), (0, 255, 255), 2)
+	#cv2.line(frame, (0, H // 2), (W, H // 2), (0, 255, 255), 2)
 
 	# use the centroid tracker to associate the (1) old object
 	# centroids with (2) the newly computed object centroids
@@ -225,15 +225,16 @@ while True:
 				# if the direction is negative (indicating the object
 				# is moving up) AND the centroid is above the center
 				# line, count the object
-				if direction < 0 and centroid[1] < H // 2:
-					totalUp += 1
-					to.counted = True
+				#if direction < 0 and centroid[1] < H // 2:
+					#totalUp += 1
+					#to.counted = True
 
 				# if the direction is positive (indicating the object
 				# is moving down) AND the centroid is below the
 				# center line, count the object
-				elif direction > 0 and centroid[1] > H // 2:
-					totalDown += 1
+				#elif direction > 0 and centroid[1] > H // 2:
+					#totalDown += 1
+					#to.counted = True
 					to.counted = True
 
 		# store the trackable object in our dictionary
@@ -255,10 +256,10 @@ while True:
 	]
 
 	# loop over the info tuples and draw them on our frame
-	for (i, (k, v)) in enumerate(info):
-		text = "{}: {}".format(k, v)
-		cv2.putText(frame, text, (10, H - ((i * 20) + 20)),
-			cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
+	#for (i, (k, v)) in enumerate(info):
+		#text = "{}: {}".format(k, v)
+		#cv2.putText(frame, text, (10, H - ((i * 20) + 20)),
+			#cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
 
 	# check to see if we should write the frame to disk
 	if writer is not None:
